@@ -3,6 +3,18 @@
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+const myGit = '';
+let resArray = [];
+axios
+  .get(`https://api.github.com/users/TommyGunzz`)
+  .then((res) => {
+      console.log('Here is the res: ', res);
+      resArray = res.data;
+    })
+  .catch((err) => {
+      console.log('Here is the err: ', err);
+  });
+
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
