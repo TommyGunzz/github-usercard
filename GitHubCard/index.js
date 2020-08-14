@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
@@ -67,7 +68,7 @@ axios
     console.log('Here is the res: ', res);
     followersArray = res.data;
     console.log(`Array:`, resArray);
-    cards.appendChild(githubCard(followersArray));
+    cards.appendChild(myCard(followersArray));
     
   })
   .catch((err) => {
@@ -80,7 +81,7 @@ axios
     console.log('Here is the res: ', res);
     followersArray = res.data;
     console.log(`Array:`, resArray);
-    cards.appendChild(githubCard(followersArray));
+    cards.appendChild(myCard(followersArray));
 
   })
   .catch((err) => {
@@ -96,7 +97,7 @@ axios
   
     followersArray = res.data;
     console.log(`Array:`, resArray);
-    cards.appendChild(githubCard(followersArray));
+    cards.appendChild(myCard(followersArray));
 
   })
   .catch((err) => {
