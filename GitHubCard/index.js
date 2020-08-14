@@ -1,21 +1,25 @@
+/* eslint-disable no-undef */
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
-const myGit = '';
+
+
 let resArray = [];
 axios
   .get(`https://api.github.com/users/TommyGunzz`)
   .then((res) => {
-      console.log('Here is the res: ', res);
-      resArray = res.data;
-    })
+  
+    resArray = res.data;
+    console.log(`Array:`, resArray);
+    cards.appendChild(myCard(resArray));
+   
+  })
   .catch((err) => {
-      console.log('Here is the err: ', err);
+    console.log('Here is the err: ', err);
   });
-
-
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -41,9 +45,64 @@ axios
     Using that array, iterate over it, requesting data for each user, creating a new card for each
     user, and adding that card to the DOM.
 */
+let followersArray = [];
 
-const followersArray = [];
+axios
+  .get(`https://api.github.com/users/tetondan`)
+  .then((res) => {
 
+    console.log('Here is the res: ', res);
+    followersArray = res.data;
+    console.log(`Array:`, resArray);
+    cards.appendChild(myCard(followersArray));
+    
+  })
+  .catch((err) => {
+    console.log('Here is the err: ', err);
+  });
+
+  axios
+  .get(`https://api.github.com/users/dustinmyers`)
+  .then((res) => {
+    console.log('Here is the res: ', res);
+    followersArray = res.data;
+    console.log(`Array:`, resArray);
+    cards.appendChild(githubCard(followersArray));
+    
+  })
+  .catch((err) => {
+      console.log('Here is the err: ', err);
+  });
+
+  axios
+  .get(`https://api.github.com/users/devbrunopaula`)
+  .then((res) => {
+    console.log('Here is the res: ', res);
+    followersArray = res.data;
+    console.log(`Array:`, resArray);
+    cards.appendChild(githubCard(followersArray));
+
+  })
+  .catch((err) => {
+
+    console.log('Here is the err: ', err);
+  });
+
+  axios
+  .get(`https://api.github.com/users/bigknell`)
+  .then((res) => {
+
+    console.log('Here is the res: ', res);
+  
+    followersArray = res.data;
+    console.log(`Array:`, resArray);
+    cards.appendChild(githubCard(followersArray));
+
+  })
+  .catch((err) => {
+
+    console.log('Here is the err: ', err);
+  });
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
     Using DOM methods and properties, create and return the following markup:
@@ -72,44 +131,55 @@ const followersArray = [];
     luishrd
     bigknell
 */
+
  // My Code
 
- function myCard(data){
-  const myCardMaker=
-      document.createElement('.card');
-  const myImgMaker=
-      document.createElement('img');
-  const cardInfoMaker=
-      document.createElement('.card-info');
-  const userNameMaker=
-      document.createElement('h3');
-  const usersNikNameMaker=
-      document.createElement('p');
-  const locationMaker=
-      document.createElement('p');
-  const profileMaker=
-      document.createElement('p');
-  const followersMaker=
-      document.createElement('p');
-  const followingMaker=
-      document.createElement('p');
-  const bioMaker=
-      document.createElement('p');
+ function myCard(object){
+  
+  const card = document.createElement('div');
+  card.classList.add('card');
+  const img = document.createElement('img');
+  img.src = object.avatar_url;
+  const cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
 
-myCardMaker.append(myCardMaker);
-  myCardMaker.append.card(myCard);
-  myImgMaker.append.card(img);
-  cardInfoMaker.append.card();
-  myImgMaker.append.card(img);
-  myCardMaker.classList.add('card');
-  cardInfoMaker.classList.add('card-info');
-  userNameMaker.classList.add('name');
-  usersNikNameMaker.classList.add('user-name');
-  profileMaker.append.card.data(Profile);
-  followersMaker.append.card.data(followersArray);
-  followingMaker.append.card.data(followingMaker);
-  bioMaker.append.card.data(bio);
+  const name = document.createElement('h3');
+  name.classList.add('name');
+  name.textContent = object.name;
 
-  console.log (data);
-  return myCardMaker;
-};
+  const username = document.createElement('p');
+  username.classList.add('username');
+  username.textContent = object.login;
+
+  const location = document.createElement('p');
+  location.textContent = `Location: ${object.location}`;
+
+  const profile = document.createElement('p');
+  profile.textContent = `Profile: `
+
+  const githubPage = document.createElement('a');
+  githubPage.href = object.html_url;
+  githubPage.textContent = object.html_url;
+
+  const followers = document.createElement('p');
+  followers.textContent = `Followers: ${object.followers}`;
+
+  const following = document.createElement('p');
+  following.textContent = `Followers: ${object.following}`;
+
+  const bio = document.createElement('p');
+  bio.textContent = `Bio: ${object.bio}`;
+  
+  card.appendChild(img);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(name);
+  cardInfo.appendChild(username);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  profile.appendChild(githubPage);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
+return card;
+ }
