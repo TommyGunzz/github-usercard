@@ -28,6 +28,8 @@ axios
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
+// component
+
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
@@ -70,3 +72,44 @@ const followersArray = [];
     luishrd
     bigknell
 */
+ // My Code
+
+ function myCard(data){
+  const myCardMaker=
+      document.createElement('.card');
+  const myImgMaker=
+      document.createElement('img');
+  const cardInfoMaker=
+      document.createElement('.card-info');
+  const userNameMaker=
+      document.createElement('h3');
+  const usersNikNameMaker=
+      document.createElement('p');
+  const locationMaker=
+      document.createElement('p');
+  const profileMaker=
+      document.createElement('p');
+  const followersMaker=
+      document.createElement('p');
+  const followingMaker=
+      document.createElement('p');
+  const bioMaker=
+      document.createElement('p');
+
+myCardMaker.append(myCardMaker);
+  myCardMaker.append.card(myCard);
+  myImgMaker.append.card(img);
+  cardInfoMaker.append.card();
+  myImgMaker.append.card(img);
+  myCardMaker.classList.add('card');
+  cardInfoMaker.classList.add('card-info');
+  userNameMaker.classList.add('name');
+  usersNikNameMaker.classList.add('user-name');
+  profileMaker.append.card.data(Profile);
+  followersMaker.append.card.data(followersArray);
+  followingMaker.append.card.data(followingMaker);
+  bioMaker.append.card.data(bio);
+
+  console.log (data);
+  return myCardMaker;
+};
